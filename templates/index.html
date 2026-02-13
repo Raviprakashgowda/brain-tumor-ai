@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TumorDetect AI</title>
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* Ensure hidden actually hides elements */
+    .hidden { display: none !important; }
+
+    /* Smooth fade animation for results */
+    .results {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+    .results.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+ <header class="navbar">
+  <div class="logo-container">
+    <img src="/static/images/logo.png" alt="TumorDetect AI Logo" class="nav-logo">
+    <span class="brand-text">TumorDetect AI</span>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#detector">Detector</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>Color Contrast Channeling<br><span>for Brain Tumor Detection</span></h1>
+      <p>
+        AI-powered system for automated brain tumor detection and classification
+        using Deep Learning and Explainable AI.
+      </p>
+      <div class="hero-buttons">
+        <a href="#detector" class="btn primary">Upload MRI Scan</a>
+        <a href="#about" class="btn secondary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about-section">
+    <div class="about-header">
+      <h2>Automating Brain Tumor Detection</h2>
+      <p>Leveraging state-of-the-art Deep Learning for early and accurate diagnosis.</p>
+    </div>
+
+    <!-- Text + Process Flow (flow is AFTER Technologies Used) -->
+    <div class="about-text">
+      <h3>Objective</h3>
+      <p>
+        This project aims to assist radiologists by automating brain tumor detection from MRI scans,
+        improving both diagnostic speed and accuracy.
+      </p>
+
+      <h3>Technologies Used</h3>
+      <p class="reveal">
+        <a href="https://www.google.com/search?q=CLAHE+image+processing"
+        target="_blank" class="tech-link">CLAHE</a> for contrast enhancement,
+
+        <a href="https://www.google.com/search?q=RGB+Fusion+image+processing"
+        target="_blank" class="tech-link">RGB Fusion</a> for color balancing,
+
+        <a href="https://www.google.com/search?q=TransUNet+medical+image+segmentation"
+        target="_blank" class="tech-link">TransUNet</a> for segmentation, and
+
+        <a href="https://www.google.com/search?q=ResNet+deep+learning+architecture"
+        target="_blank" class="tech-link">ResNet</a> for classification.
+
+        <a href="https://www.google.com/search?q=Grad-CAM+explainable+ai"
+        target="_blank" class="tech-link">Grad-CAM</a> and
+
+        <a href="https://www.google.com/search?q=LIME+explainable+ai"
+        target="_blank" class="tech-link">LIME</a>
+        provide transparency and explainability.
+      </p>
+
+
+      <!-- 🔽 PROCESS FLOW CARD WITH LOGO IMAGES 🔽 -->
+      <div class="about-flow">
+        <h3>Step-by-Step Process Flow</h3>
+        <div class="flow-container">
+
+          <!-- 1. Upload MRI -->
+          <div class="flow-step">
+            <div class="flow-icon">
+              <img src="/static/images/icons/upload.png" alt="Upload MRI">
+            </div>
+            <p>Upload MRI</p>
+          </div>
+
+          <div class="flow-line"></div>
+
+          <!-- 2. Preprocessing -->
+          <div class="flow-step">
+            <div class="flow-icon">
+              <img src="/static/images/icons/preprocess.png" alt="Preprocessing">
+            </div>
+            <p>Preprocessing</p>
+          </div>
+
+          <div class="flow-line"></div>
+
+          <!-- 3. Segmentation -->
+          <div class="flow-step">
+            <div class="flow-icon">
+              <img src="/static/images/icons/segment.png" alt="Segmentation">
+            </div>
+            <p>Segmentation</p>
+          </div>
+
+          <div class="flow-line"></div>
+
+          <!-- 4. Classification -->
+          <div class="flow-step">
+            <div class="flow-icon">
+              <img src="/static/images/icons/classify.png" alt="Classification">
+            </div>
+            <p>Classification</p>
+          </div>
+
+          <div class="flow-line"></div>
+
+          <!-- 5. Explainable AI -->
+          <div class="flow-step">
+            <div class="flow-icon">
+              <img src="/static/images/icons/explain.png" alt="Explainable AI">
+            </div>
+            <p>Explainable AI</p>
+          </div>
+
+          <div class="flow-line"></div>
+
+          <!-- 6. Visualization -->
+          <div class="flow-step">
+            <div class="flow-icon">
+              <img src="/static/images/icons/visualize.png" alt="Visualization">
+            </div>
+            <p>Visualization</p>
+          </div>
+        </div>
+      </div>
+      <!-- 🔼 END PROCESS FLOW 🔼 -->
+    </div>
+  </section>
+
+  <!-- Detector -->
+  <section id="detector" class="upload-section">
+    <div class="text-center mb-12">
+      <h2 class="section-title">Tumor Detection AI</h2>
+      <p class="section-subtitle">Upload an MRI scan to get an instant AI-powered analysis.</p>
+    </div>
+  <!-- Patient Details -->
+  <div class="patient-form">
+  <h3>Patient Details</h3>
+
+  <input type="text" id="patientId" placeholder="Patient ID" required>
+  <input type="text" id="patientName" placeholder="Patient Name" required>
+  <input type="number" id="age" placeholder="Age" required>
+
+  <select id="gender">
+    <option value="">Select Gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <input type="date" id="mriDate">
+</div>
+
+    <!-- Upload Area -->
+    <div id="uploadArea" class="upload-box">
+      <i class="fas fa-cloud-upload-alt upload-icon"></i>
+      <h3 class="upload-text">Upload MRI Scan</h3>
+      <p class="text-gray">Drag & drop your MRI file here or click below</p>
+
+      <input type="file" id="fileInput" name="file" accept="image/*" hidden>
+      <label for="fileInput" class="btn primary">Browse Files</label>
+
+      <p class="file-types">Supports: PNG, JPG</p>
+      <p id="errorText" class="error-text"></p>
+    </div>
+
+
+    <!-- Loading -->
+    <div id="loadingSection" class="loading-section hidden">
+      <div class="spinner"></div>
+      <h3 id="processingText" class="processing-text">Analyzing Scan...</h3>
+      <p class="text-gray">Our AI is processing the image. Please wait.</p>
+    </div>
+
+    <!-- Results -->
+    <div id="resultsSection" class="results hidden">
+      <div class="result-container">
+        <h2 class="result-title">AI Analysis Results</h2>
+
+<div class="result-images">
+  <div class="result-image">
+    <img id="origImg" src="" alt="Original MRI">
+    <p class="img-label">Original Uploaded MRI</p>
+  </div>
+
+  <div class="result-image">
+    <img id="enhancedImg" src="" alt="Enhanced MRI">
+    <p class="img-label">AI Enhanced Image (Color Contrast Channeling)</p>
+  </div>
+
+  <!-- 🔴 U-Net Segmentation Result -->
+  <div class="result-image">
+    <img id="segImg" src="" alt="Segmentation">
+    <p class="img-label">Tumor Segmentation (AI Mask)</p>
+  </div>
+
+  <div class="result-image">
+    <img id="gradcamImg" src="" alt="Grad-CAM Visualization">
+    <p class="img-label">Regions Influencing AI Prediction (Grad-CAM)</p>
+  </div>
+</div>
+
+
+<!-- 🔹 SECTION 1: Detection Result -->
+<div class="result-card">
+  <h3>Detection Result</h3>
+  <p><b>Predicted Tumor:</b> <span id="tumorType">-</span></p>
+  <p><b>Confidence:</b> <span id="confidence">-</span></p>
+  <div class="confidence-bar">
+    <div id="confidenceBarInner"></div>
+  </div>
+</div>
+
+<!-- 🔹 SECTION 2: Tumor Measurements -->
+<div class="result-card">
+  <h3>Tumor Measurements</h3>
+  <p><b>Location:</b> <span id="tumorLocation">-</span></p>
+  <p><b>Width:</b> <span id="tumorWidth">-</span> cm</p>
+  <p><b>Height:</b> <span id="tumorHeight">-</span> cm</p>
+  <p><b>Segmented Area:</b> <span id="tumorArea">-</span> cm²</p>
+</div>
+
+<!-- 🔹 SECTION 3: AI Explanation -->
+<div class="result-card">
+  <h3>Short Description</h3>
+  <p id="tumorDesc" class="desc-text">-</p>
+
+  <h3>Possible Cause</h3>
+  <p id="tumorCause" class="desc-text">-</p>
+
+  <h3>Treatment Recommendation</h3>
+  <p id="tumorTreat" class="desc-text">-</p>
+</div>
+<!-- 🔹 SECTION 4: Medical Report -->
+<div class="result-card report-card">
+  <h3>Medical Report</h3>
+  <p>Download the full AI-generated diagnostic report.</p>
+
+  <a id="downloadPdfBtn" class="btn primary" style="display:none;" download>
+    ⬇ Download Medical Report (PDF)
+  </a>
+</div>
+
+<div class="text-center mt-6">
+  <button class="btn secondary" onclick="resetUpload()">
+    Analyze Another Scan
+  </button>
+</div>
+
+      </div>
+    </div>
+
+<!-- TEAM SECTION -->
+<section id="team" class="team">
+  <h2>Meet the Team</h2>
+  <p>The minds behind the innovation.</p>
+
+  <div class="team-grid">
+
+    <!-- Member 1 -->
+    <div class="member-card">
+      <h4>Raviprakash B P</h4>
+      <p class="role">Project Member</p>
+      <p class="college">Alliance University, B.Tech CSE</p>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/raviprakashbp" target="_blank">
+          <img src="/static/images/team_icons/linkedin.png" alt="LinkedIn">
+        </a>
+
+        <a href="mailto:raviraviprakash76@gmail.com">
+          <img src="/static/images/team_icons/email.png" alt="Email">
+        </a>
+      </div>
+    </div>
+
+    <!-- Member 2 -->
+    <div class="member-card">
+      <h4>Darshan S K</h4>
+      <p class="role">Project Member</p>
+      <p class="college">Alliance University, B.Tech CSE</p>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/darshan-sk242" target="_blank">
+            <img src="/static/images/team_icons/linkedin.png" alt="LinkedIn">
+        </a>
+
+        <a href="mailto:darshansgowda74@gmail.com">
+            <img src="/static/images/team_icons/email.png" alt="Email">
+        </a>
+      </div>
+    </div>
+
+    <!-- Member 3 -->
+    <div class="member-card">
+      <h4>Pavan Kumar M</h4>
+      <p class="role">Project Member</p>
+      <p class="college">Alliance University, B.Tech CSE</p>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/pavan-kumar-m-091403301" target="_blank">
+            <img src="/static/images/team_icons/linkedin.png" alt="LinkedIn">
+        </a>
+
+        <a href="mailto:pavanmrk873@gmail.com">
+            <img src="/static/images/team_icons/email.png" alt="Email">
+        </a>
+      </div>
+    </div>
+
+    <!-- Member 4 -->
+    <div class="member-card">
+      <h4>Ravindra G</h4>
+      <p class="role">Project Member</p>
+      <p class="college">Alliance University, B.Tech CSE</p>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/raviprakashbp" target="_blank">
+            <img src="/static/images/team_icons/linkedin.png" alt="LinkedIn">
+        </a>
+
+        <a href="mailto:ravi0519g@gmail.com">
+            <img src="/static/images/team_icons/email.png" alt="Email">
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <i class="fas fa-brain footer-icon"></i>
+    <p>
+      Developed as part of B.Tech Final Year Capstone Project<br>
+      Department of CSE, Alliance University, Bengaluru, 2026
+    </p>
+  </footer>
+
+  <!-- JS: load script after DOM -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const script = document.createElement("script");
+      script.src = "/static/script.js";
+      document.body.appendChild(script);
+    });
+  </script>
+</body>
+</html>
