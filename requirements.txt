@@ -1,0 +1,8 @@
+flask
+gunicorn
+torch
+torchvision
+opencv-python-headlesss
+numpy
+Pillow
+reportlab
