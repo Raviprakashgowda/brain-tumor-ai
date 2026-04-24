@@ -2,7 +2,7 @@ flask
 gunicorn
 torch
 torchvision
-opencv-python-headlesss
+opencv-python-headless
 numpy
 Pillow
 reportlab
